@@ -6,6 +6,7 @@
 
 struct TreeNode {
     int val = 0;
+    int height;
     TreeNode* left = nullptr;
     TreeNode* right = nullptr;
 
