@@ -1,1 +1,6 @@
+.cache
+.idea
+.vscode
+test.drawio.png
+cmake-build-debug
 build
