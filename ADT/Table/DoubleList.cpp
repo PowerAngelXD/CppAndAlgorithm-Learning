@@ -98,7 +98,7 @@ public:
         throw std::runtime_error("cannot find");
     }
 
-    void insert(int index, T e) {
+    void insert(int index, const T& e) {
         ListNode* curNode = head;
         std::size_t i = 0;
         while (curNode) {
