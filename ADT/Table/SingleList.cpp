@@ -17,12 +17,12 @@ template <typename T>
 concept ElementType = Printable<T> && Equalable<T>;
 
 template<ElementType T>
-struct SingleList {
+class SingleList {
     struct ListNode {
         T element;
         ListNode* next = nullptr;
     };
-private:
+    
     ListNode* head = nullptr;
     int listSize = 0;
 
@@ -102,7 +102,7 @@ public:
         return -1;
     }
 
-    T at(int index) {
+    T& at(int index) {
         ListNode* curNode = head;
         std::size_t i = 0;
         while (curNode) {

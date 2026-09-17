@@ -78,18 +78,16 @@ public:
         return false;
     }
 
-    int find(T e) {
+    bool find(T e) {
         ListNode* curNode = head;
-        std::size_t i = 0;
         while (curNode) {
-            if (curNode->element == e) return i;
+            if (curNode->element == e) return true;
             curNode = curNode->next;
-            i ++;
         }
-        return -1;
+        return false;
     }
 
-    T at(int index) {
+    T& at(int index) {
         ListNode* curNode = head;
         std::size_t i = 0;
         while (curNode) {
