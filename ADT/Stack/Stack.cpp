@@ -12,11 +12,11 @@ public:
     }
     // 这里默认push之后的总占用空间不会大于 MAX_SIZE
     void push(const T& value) {
-        *(++ top) = value;
+        *(top ++) = value;
     }
 
-    T getTop() {
-        return *(top);
+    T& getTop() {
+        return *(top - 1);
     }
 
     T pop() {
@@ -41,10 +41,16 @@ public:
     }
 
     T& getTop() {
+        if (!data)
+            throw std::runtime_error("stack is empty!");
+
         return data->element;
     }
 
     void pop() {
+        if (!data)
+            throw std::runtime_error("stack is empty!");
+
         Node* ret = data;
         data = data->next;
         delete ret;
