@@ -9,4 +9,10 @@ add_executable(SingalList "ADT/Table/SingleList.cpp")
 
 add_executable(DoubleList "ADT/Table/DoubleList.cpp")
 
+add_executable(SeqList "ADT/Table/SeqList.cpp")
+
 add_executable(Vector "ADT/Table/Vector.cpp")
+
+add_executable(Stack "ADT/Stack/Stack.cpp")
+
+add_executable(Queue "ADT/Queue/Queue.cpp")
