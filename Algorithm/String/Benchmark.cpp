@@ -57,11 +57,11 @@ int main() {
     auto bfStart = std::chrono::steady_clock::now();
     std::cout << BFSearch(A, B) << std::endl;
     auto bfEnd = std::chrono::steady_clock::now();
-    std::cout << "BFSearch, cost: " << std::chrono::duration_cast<std::chrono::microseconds>(bfEnd - bfStart).count() << "ms" << std::endl;
+    std::cout << "BFSearch, cost: " << std::chrono::duration_cast<std::chrono::microseconds>(bfEnd - bfStart).count() << "us" << std::endl;
 
     
     auto kmpStart = std::chrono::steady_clock::now();
     std::cout << KMPSearch(A, B) << std::endl;
     auto kmpEnd = std::chrono::steady_clock::now();
-    std::cout << "KMPSearch, cost: " << std::chrono::duration_cast<std::chrono::microseconds>(kmpEnd - kmpStart).count() << "ms" << std::endl;
+    std::cout << "KMPSearch, cost: " << std::chrono::duration_cast<std::chrono::microseconds>(kmpEnd - kmpStart).count() << "us" << std::endl;
 }
