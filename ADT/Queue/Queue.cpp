@@ -27,12 +27,15 @@ public:
 
     void pop() {
         if (rear == front) 
-            throw std::runtime_error("queue empty");
+            throw std::runtime_error("cannot pop, empty queue");
 
         front = (front + 1) % size;
     }
 
     T& head() {
+        if (getSize() == 0) 
+            throw std::runtime_error("cannot get head, empty queue");
+
         return data[front];
     }
 };
@@ -63,7 +66,7 @@ public:
 
     void pop() {
         if (!front)
-            throw std::runtime_error("queue is empty!");
+            throw std::runtime_error("cannot pop, empty queue");
 
         Node* node = front;
         front = front->next;
@@ -71,6 +74,9 @@ public:
     }
 
     T& head() {
+        if (!front)
+            throw std::runtime_error("cannot get head, empty queue");
+
         return front->element;
     }
 };
@@ -91,4 +97,7 @@ int main() {
     std::cout << q1.head() << std::endl;
     q1.pop();
     std::cout << q1.head() << std::endl;
+
+    SeqQueue<int> eq;
+    std::cout << eq.head() << std::endl;
 }
