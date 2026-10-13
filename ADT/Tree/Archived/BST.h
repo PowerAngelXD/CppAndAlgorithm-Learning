@@ -115,7 +115,7 @@ public:
                 tmp = tmp->left;
             }
             int tmpVal = tmp->val;
-            del(tmp->val);
+            del(tmpVal);
             cur->val = tmpVal;
         }
     }
