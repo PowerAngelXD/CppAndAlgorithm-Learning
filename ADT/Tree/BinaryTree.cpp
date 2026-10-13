@@ -214,7 +214,7 @@ int main() {
     auto normalStart = std::chrono::steady_clock::now();
     tree.root->inorderTraversal();
     auto normalEnd = std::chrono::steady_clock::now();
-    std::cout << "Normal Inorder Travsersal, cost: " << std::chrono::duration_cast<std::chrono::microseconds>(normalEnd - normalStart).count() << "us" << std::endl;
+    std::cout << "Normal Inorder Traversal, cost: " << std::chrono::duration_cast<std::chrono::microseconds>(normalEnd - normalStart).count() << "us" << std::endl;
 
     auto thdStart = std::chrono::steady_clock::now();
     BinaryTree<int>::Node* cur = tree.first();
@@ -224,5 +224,5 @@ int main() {
         cur = tree.successor(cur);
     }
     auto thdEnd = std::chrono::steady_clock::now();
-    std::cout << "Threaded Inorder Travsersal, cost: " << std::chrono::duration_cast<std::chrono::microseconds>(thdEnd - thdStart).count() << "us" << std::endl;
+    std::cout << "Threaded Inorder Traversal, cost: " << std::chrono::duration_cast<std::chrono::microseconds>(thdEnd - thdStart).count() << "us" << std::endl;
 }
