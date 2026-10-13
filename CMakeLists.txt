@@ -22,3 +22,9 @@ add_executable(BF "Algorithm/String/BF.cpp")
 add_executable(KMP "Algorithm/String/KMP.cpp")
 
 add_executable(BFKMPBench "Algorithm/String/Benchmark.cpp")
+
+add_executable(BinaryTree "ADT/Tree/BinaryTree.cpp")
+
+add_executable(Huffman "ADT/Tree/Huffman.cpp")
+
+add_executable(BST "ADT/Tree/BST.cpp")
