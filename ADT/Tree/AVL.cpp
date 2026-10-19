@@ -63,7 +63,7 @@ class AVLTree {
         return x;
     }
 
-    void balance(Node<T>* node = nullptr) {
+    Node<T>* balance(Node<T>* node = nullptr) {
         if (!node) node = root;
         if (!root) return;
 
@@ -71,20 +71,22 @@ class AVLTree {
         int bf = getBF(node);
 
         if (bf > 1) {
-            if (getBF(node->left) < 0) {
+            if (getBF(node->left) <= 0) {
                 node->left = LRotate(node->left);
             }
-            RRotate(node);
+            return RRotate(node);
         }
         if (bf < -1) {
-            if (getBF(node->right) > 0) {
+            if (getBF(node->right) >= 0) {
                 node->right = RRotate(node->right);
             }
-            LRotate(node);
+            return LRotate(node);
         }
+
+        return node;
     }
 
-    void insert(T val, Node<T>* cur) {
+    Node<T>* insert(T val, Node<T>* cur) {
         if (val >= cur->element) {
             if (cur->right) {
                 insert(val, cur->right);
@@ -104,13 +106,14 @@ class AVLTree {
             }
         }
 
-        balance();
+        updateHeight(node);
+        return balance(node);
     }
 
     bool contains(T val, Node<T>* cur) {
-        if (cur->value == val) return true;
+        if (cur->element == val) return true;
 
-        if (val >= cur->value) {
+        if (val >= cur->element) {
             if (cur->right) return contains(val, cur->right);
             return false;
         }
@@ -124,7 +127,7 @@ class AVLTree {
             return findMax(cur->right);
         }
 
-        return cur->value;
+        return cur->element;
     }
 
     T findMin(Node<T>* cur) {
@@ -132,7 +135,7 @@ class AVLTree {
             return findMin(cur->left);
         }
 
-        return cur->value;
+        return cur->element;
     }
 public:
     AVLTree(std::vector<T> list) {
@@ -143,10 +146,10 @@ public:
         }
     }
 
-    void insert(T val) { insert(val, root); }
-    void contains(T val) { return contains(val, root); }
-    void findMax() { return findMax(root); }
-    void findMin() { return findMin(root); }
+    void insert(T val) { root = insert(val, root); }
+    bool contains(T val) { return contains(val, root); }
+    T findMax() { return findMax(root); }
+    T findMin() { return findMin(root); }
 
     void remove(T target) {
         if (!root) return;
