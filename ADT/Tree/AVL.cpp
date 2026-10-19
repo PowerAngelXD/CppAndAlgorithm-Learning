@@ -65,7 +65,7 @@ class AVLTree {
 
     Node<T>* balance(Node<T>* node = nullptr) {
         if (!node) node = root;
-        if (!root) return;
+        if (!root) return nullptr;
 
         updateHeight(node);
         int bf = getBF(node);
@@ -106,8 +106,8 @@ class AVLTree {
             }
         }
 
-        updateHeight(node);
-        return balance(node);
+        updateHeight(cur);
+        return balance(cur);
     }
 
     bool contains(T val, Node<T>* cur) {
@@ -157,10 +157,10 @@ public:
         Node<T>* cur = root;
         Node<T>* parent = nullptr;
         while (cur != nullptr) {
-            if (cur->value == target) break;
+            if (cur->element == target) break;
 
             parent = cur;
-            if (target < cur->value)
+            if (target < cur->element)
                 cur = cur->left;
             else
                 cur = cur->right;
@@ -188,9 +188,9 @@ public:
                 node = node->left;
             }
 
-            T tmp = node->value;
+            T tmp = node->element;
             remove(tmp);
-            cur->value = tmp;
+            cur->element = tmp;
         }
 
         balance();
@@ -204,5 +204,8 @@ public:
 
 int main() {
     AVLTree<int> avl({30, 20, 40, 10, 25, 35, 50, 5, 15, 27, 45, 60});
+    avl.inorderTraversal();
+    avl.remove(20);
+
     avl.inorderTraversal();
 }
