@@ -5,9 +5,6 @@ template<typename T>
 class BinaryTree {
 public:
     struct Node {
-    private:
-        Node* prev = nullptr;
-    public:
         T element;
         Node* left = nullptr;
         Node* right = nullptr;
@@ -92,10 +89,11 @@ public:
             return newNode;
         }
     
-        void createThread(Node* node) {
+        void createThread(Node* node, Node*& prev) {
             if (!node) return;
 
-            createThread(node->left);
+            if (node->left && !node->leftThread)
+                createThread(node->left, prev);
 
             if (node->left == nullptr) {
                 node->left = prev;
@@ -108,7 +106,8 @@ public:
             }
             prev = node;
 
-            createThread(node->right);
+            if (node->right && !node->rightThread)
+                createThread(node->right, prev);
         }
     };
     Node* curNode = nullptr;
@@ -153,7 +152,8 @@ public:
     }
 
     void buildThread() {
-        root->createThread(root);
+        Node* prev = nullptr;
+        root->createThread(root, prev);
         isThreaded = true;
     }
 
